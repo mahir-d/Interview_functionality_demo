@@ -48,12 +48,28 @@ export default class Toolbar extends Component {
         publication.track.enable();
         });
     }
+    audioState(){
+        if (this.props.room.localParticipant.audioTracks[0].value.isTrackEnabled=false){
+            this.unmuteAudio()
+        }
+        else{
+            this.muteAudio()
+        }
+    }
+    videoState(){
+        if (vState=false){
+            this.unmuteCamera()
+        }
+        else{
+            this.muteCamera()
+        }
+    }
     
     render(){
         return(
         <div class="d-flex align-items-center" id='tbar'>
-            <button type = 'button' class="p-2">Camera On/Off</button>
-            <button type = 'button' class="p-2">Mute/Unmute</button>
+            <button type = 'button' onClick={this.videoState} class="p-2">Camera On/Off</button>
+            <button type = 'button' onClick={this.audioState}class="p-2">Mute/Unmute</button>
             <button type = 'button' class="p-2">Screenshare</button>
             <button onClick='leaveroom()' type = 'button' class="p-2">Leave Room</button>
         </div>
