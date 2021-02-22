@@ -93,9 +93,7 @@ class TwilioVideo extends Component {
                         
 
                     }
-                         <div className='row'>
-                            <Toolbar></Toolbar>
-                        </div>
+
                 </div>
 
         )
