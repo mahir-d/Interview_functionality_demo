@@ -9,11 +9,7 @@ export class Interview extends Component {
             <div className="container-fluid">
                 <div className="row firstRow">
                     <div className="col-sm-12 col-md-8"  >
-<<<<<<< HEAD
-                        <div className="twilio d-flex align-items-end justify-content-center">
-=======
                         <div className="twilio ">
->>>>>>> 5e65199ef449d12b9c829c60f62e85e8f7b362d7
                             <TwilioVideo></TwilioVideo>
                         </div>
 
