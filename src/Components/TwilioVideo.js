@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Room from './Room'
+import Toolbar from './Toolbar'
 import './Interview.css'
 const axios = require('axios');
 const { connect } = require('twilio-video');
@@ -80,14 +81,16 @@ class TwilioVideo extends Component {
 
                             </div>
                         </div>
+                        
 
                     }
+                         <div className='row'>
+                            <Toolbar></Toolbar>
+                        </div>
                 </div>
 
         )
     }
-
-
 
 }
 export default TwilioVideo
