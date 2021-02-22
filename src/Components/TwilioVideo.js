@@ -7,7 +7,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Room from './Room'
-import Toolbar from './Toolbar'
 import './Interview.css'
 const axios = require('axios');
 const { connect } = require('twilio-video');
@@ -70,7 +69,7 @@ class TwilioVideo extends Component {
 
             <div>
                 {
-                    this.state.room == null
+                    this.state.room === null
                         ? <div className="row ">
                             <div className="col-12 ">
                                 <div className="twilioVideo d-flex justify-content-center align-items-center">

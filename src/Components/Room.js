@@ -65,11 +65,13 @@ export default class Room extends Component {
 
                 <div className="participants">
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-sm-12 col-md-6">
                             <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+                            {console.log(this.props.room.localParticipant)}
+
                         </div>
 
-                        <div className="col-md-6">
+                        <div className="col-sm-12 col-md-6">
                             {
                                 this.state.remoteParticipants.map(participant =>
                                 <Participant key={participant.identity} participant={participant} />
@@ -78,9 +80,9 @@ export default class Room extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-12">
+                        <div className="col-12 d-flex align-items-end justify-content-center">
                             {/* Move this to tool bar later */}
-                            <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
+                            {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
                             <Toolbar></Toolbar>
                         </div>
                     </div>
