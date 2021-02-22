@@ -12,6 +12,11 @@
     background-color: brown;
 }
 
+.twilioVideo{
+    width: inherit;
+    height: inherit;
+}
+
 .studentProfile{
     width: 100%;
     height: 500px;
