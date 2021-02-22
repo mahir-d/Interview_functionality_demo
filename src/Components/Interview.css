@@ -14,7 +14,7 @@
 
 .twilioVideo{
     width: inherit;
-    height: inherit;
+    height: 500px;
 }
 
 .studentProfile{
@@ -33,4 +33,17 @@
     height: 200px;
     background-color:royalblue;
 }
+.participants{
+    height: inherit;
+    width: inherit;
+}
 
+.participants video{
+    height: 400px;
+    width: 400px;
+}
+
+.room{
+    height: inherit;
+    width: inherit;
+}
