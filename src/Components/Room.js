@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import Participant from './Participant';
+import Toolbar from './Toolbar'
 export default class Room extends Component {
 
     constructor(props) {
@@ -61,14 +62,28 @@ export default class Room extends Component {
 
         return (
             <div className="room">
-                <div className="participants">
-                    <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
 
-                    {
-                        this.state.remoteParticipants.map(participant =>
-                            <Participant key={participant.identity} participant={participant} />
-                        )
-                    }
+                <div className="participants">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+                        </div>
+
+                        <div className="col-md-6">
+                            {
+                                this.state.remoteParticipants.map(participant =>
+                                <Participant key={participant.identity} participant={participant} />
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            {/* Move this to tool bar later */}
+                            <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
+                            <Toolbar></Toolbar>
+                        </div>
+                    </div>
 
                 </div>
 

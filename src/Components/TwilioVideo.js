@@ -23,7 +23,7 @@ class TwilioVideo extends Component {
 
         this.state = {
             //This is the user's name to join the video room, fetch from backend
-            user_name: 'mahir',
+            identity: 'mahir',
             //Fetch from backend
             room_name: 'cool-room',
             room: null,
@@ -39,7 +39,7 @@ class TwilioVideo extends Component {
     async joinRoom() {
 
         try {
-            const response = await axios.get(`http://localhost:3001/gettwilioaccesstoken?identity=${this.state.user_name}`);
+            const response = await axios.get(`http://localhost:3001/gettwilioaccesstoken?identity=${this.state.identity}`);
             const data = await response.data;
             console.log(data)
             const room = await connect(data, {
@@ -48,7 +48,10 @@ class TwilioVideo extends Component {
                 video: true
             });
 
-            this.setState({ room: room });
+            this.setState({
+                room: room,
+                duplicate: !this.state.duplicate
+            });
         } catch (e) {
             console.log(e);
         }
@@ -62,31 +65,35 @@ class TwilioVideo extends Component {
     }
 
     render() {
-        const disabled = this.state.user_name === '' ? true : false;
+        const disabled = this.state.identity === '' ? true : false;
         return (
 
             <div>
                 {
                     this.state.room == null
-                        ? <div className="row">
-                            <div className="col-12">
-                                <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                        ? <div className="row ">
+                            <div className="col-12 ">
+                                <div className="twilioVideo d-flex justify-content-center align-items-center">
+                                    <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                                    </div>
                             </div>
                         </div>
                         : <div>
                             <div className="row">
-                                <Room leaveRoom={this.endMeeting} room={this.state.room}></Room>
+                                <div className="col-12">
+                                    <div className="twilioVideo d-flex justify-content-center align-items-center">
+                                        <Room className="room" leaveRoom={this.endMeeting} room={this.state.room}></Room>
+                                    </div>
+                                </div>
                             </div>
                             <div className="row">
-
+                                
                             </div>
                         </div>
                         
 
                     }
-                         <div className='row'>
-                            <Toolbar></Toolbar>
-                        </div>
+
                 </div>
 
         )
