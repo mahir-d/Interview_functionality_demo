@@ -72,11 +72,6 @@ export default class Room extends Component {
 
                 </div>
 
-<<<<<<< HEAD
-=======
-                {/* Move this to tool bar later */}
-                <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
->>>>>>> 5e65199ef449d12b9c829c60f62e85e8f7b362d7
             </div>
         )
     }
