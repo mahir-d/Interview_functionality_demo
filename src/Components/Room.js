@@ -64,6 +64,7 @@ export default class Room extends Component {
                 <div className="participants">
 
                 </div>
+
             </div>
         )
     }

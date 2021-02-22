@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import Room from './Room'
+import Toolbar from './Toolbar'
 import './Interview.css'
 const axios = require('axios');
 const { connect } = require('twilio-video');
@@ -63,19 +64,31 @@ class TwilioVideo extends Component {
     render() {
         const disabled = this.state.user_name === '' ? true : false;
         return (
-            <div className="TwilioVideo">
+            <div className='twilioVideo'>
+                <div className='container'>
                 {
                     this.state.room == null
-                        ? <div className="">
-                            <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
-                        </div>
-                        : <Room leaveRoom={this.endMeeting} room={this.state.room}></Room>
-                }
+                            ? <div className='row'>
+                                <div className='col-12'>
+                                    <div className='d-flex align-items-center justify-content-center'>
+                                    <Button disabled={disabled} color='success' onClick={this.joinRoom}>Join Meeting</Button>
+                                    </div>
+                                </div>
+                            </div>
+                            : <div>
+                                <div className='row'>
+                                    <Room leaveRoom={this.endMeeting} room={this.state.room}></Room>
+                                </div>
+                            </div>
+                            
+                    }
+                                                    <div className='row'>
+                                    <Toolbar></Toolbar>
+                                </div>
+                </div>
             </div>
         )
     }
-
-
 
 }
 export default TwilioVideo
