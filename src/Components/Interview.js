@@ -1,0 +1,38 @@
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Interview.css'
+import TwilioVideo from './TwilioVideo';
+
+export class Interview extends Component {
+    render() {
+        return (
+            <div className="container-fluid">
+                <div className="row firstRow">
+                    <div className="col-sm-12 col-md-8"  >
+                        <div className="twilio d-flex align-items-center justify-content-center">
+                            <TwilioVideo></TwilioVideo>
+                        </div>
+
+                    </div>
+                    <div className="col-sm-12 col-md-4">
+                        <div className="studentProfile">
+                            Student profile
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row secondRow">
+                    <div className="col" >
+                        <div className="notes">
+                            Notes
+                       </div>
+
+                    </div>
+                </div>
+
+            </div >
+        )
+    }
+}
+
+export default Interview
