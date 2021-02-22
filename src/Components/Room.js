@@ -5,7 +5,7 @@
  * */
 
 import React, { Component } from 'react'
-
+import Participant from './Participant';
 export default class Room extends Component {
 
     constructor(props) {
@@ -62,8 +62,18 @@ export default class Room extends Component {
         return (
             <div className="room">
                 <div className="participants">
+                    <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+
+                    {
+                        this.state.remoteParticipants.map(participant =>
+                            <Participant key={participant.identity} participant={participant} />
+                        )
+                    }
 
                 </div>
+
+                {/* Move this to tool bar later */}
+                <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
             </div>
         )
     }

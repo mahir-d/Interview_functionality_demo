@@ -22,9 +22,9 @@ class TwilioVideo extends Component {
 
         this.state = {
             //This is the user's name to join the video room, fetch from backend
-            user_name: '',
+            user_name: 'mahir',
             //Fetch from backend
-            room_name: '',
+            room_name: 'cool-room',
             room: null,
         }
         this.joinRoom = this.joinRoom.bind(this);
@@ -63,15 +63,27 @@ class TwilioVideo extends Component {
     render() {
         const disabled = this.state.user_name === '' ? true : false;
         return (
-            <div className="TwilioVideo">
+
+            <div>
                 {
                     this.state.room == null
-                        ? <div className="">
-                            <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                        ? <div className="row">
+                            <div className="col-12">
+                                <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                            </div>
                         </div>
-                        : <Room leaveRoom={this.endMeeting} room={this.state.room}></Room>
-                }
-            </div>
+                        : <div>
+                            <div className="row">
+                                <Room leaveRoom={this.endMeeting} room={this.state.room}></Room>
+                            </div>
+                            <div className="row">
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
         )
     }
 
