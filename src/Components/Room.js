@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import Participant from './Participant';
+import Toolbar from './Toolbar'
 export default class Room extends Component {
 
     constructor(props) {
@@ -80,6 +81,7 @@ export default class Room extends Component {
                         <div className="col-12">
                             {/* Move this to tool bar later */}
                             <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
+                            <Toolbar></Toolbar>
                         </div>
                     </div>
 

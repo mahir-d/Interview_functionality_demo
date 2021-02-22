@@ -47,3 +47,6 @@
     height: inherit;
     width: inherit;
 }
+#tbar{
+    background-color: grey;
+}
