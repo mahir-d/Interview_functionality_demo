@@ -61,35 +61,35 @@ export default class Room extends Component {
     render() {
 
         return (
-            <div className="room">
 
-                <div className="participants">
-                    <div className="row">
-                        <div className="col-sm-12 col-md-6">
-                            <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
-                            {console.log(this.props.room.localParticipant)}
+            <div className="participants ">
 
-                        </div>
-
-                        <div className="col-sm-12 col-md-6">
-                            {
-                                this.state.remoteParticipants.map(participant =>
-                                <Participant key={participant.identity} participant={participant} />
-                                )
-                            }
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-12 d-flex align-items-end justify-content-center">
-                            {/* Move this to tool bar later */}
-                            {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
-                            <Toolbar></Toolbar>
-                        </div>
+                <div className="row">
+                    <div className="col-sm-12 col-md-6 d-flex  align-items-start">
+                        <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+                        {console.log(this.props.room.localParticipant)}
                     </div>
 
+                    <div className="col-sm-12 col-md-6 d-flex align-items-start">
+                        {
+                        this.state.remoteParticipants.map(participant =>
+                        <Participant key={participant.identity} participant={participant} />
+                        )
+                        }
+                    </div>
                 </div>
 
+                <div className="row ">
+                    <div className="col-12 d-flex align-items-end justify-content-center">
+                        {/* Move this to tool bar later */}
+                        {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
+                        <Toolbar></Toolbar>
+                    </div>
+                </div>
+                
             </div>
+
+
         )
     }
 

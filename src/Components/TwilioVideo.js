@@ -46,7 +46,6 @@ class TwilioVideo extends Component {
                 audio: true,
                 video: true
             });
-
             this.setState({
                 room: room,
                 duplicate: !this.state.duplicate
@@ -84,9 +83,6 @@ class TwilioVideo extends Component {
                                         <Room className="room" leaveRoom={this.endMeeting} room={this.state.room}></Room>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                
                             </div>
                         </div>
                         
