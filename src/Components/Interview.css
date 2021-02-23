@@ -8,13 +8,13 @@
     border-style: solid;
     border-color: black;
     width: 100%;
-    height: 500px;
+    height: 100%;
     background-color: brown;
 }
 
 .twilioVideo{
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
 }
 
 .studentProfile{
@@ -27,12 +27,27 @@
 }
 
 .notes{
+    margin-top: 10px;
     border-style: solid;
     border-color: black;
     width: 100%;
     height: 200px;
     background-color:royalblue;
 }
+.participants{
+    height: 100%;
+    width: 100%;
+}
+
+.participants video{
+    height: 80%;
+    width: 80%;
+}
+
+/* .room{
+    height: inherit;
+    width: inherit;
+} */
 #tbar{
     background-color: grey;
 }

@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import Participant from './Participant';
+import Toolbar from './Toolbar'
 export default class Room extends Component {
 
     constructor(props) {
@@ -60,24 +61,35 @@ export default class Room extends Component {
     render() {
 
         return (
-            <div className="room">
-                <div className="participants">
-                    <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
 
-                    {
+            <div className="participants ">
+
+                <div className="row">
+                    <div className="col-sm-12 col-md-6 d-flex  align-items-start">
+                        <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+                        {console.log(this.props.room.localParticipant)}
+                    </div>
+
+                    <div className="col-sm-12 col-md-6 d-flex align-items-start">
+                        {
                         this.state.remoteParticipants.map(participant =>
-                            <Participant key={participant.identity} participant={participant} />
+                        <Participant key={participant.identity} participant={participant} />
                         )
-                    }
-
+                        }
+                    </div>
                 </div>
 
-<<<<<<< HEAD
-=======
-                {/* Move this to tool bar later */}
-                <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button>
->>>>>>> 5e65199ef449d12b9c829c60f62e85e8f7b362d7
+                <div className="row ">
+                    <div className="col-12 d-flex align-items-end justify-content-center">
+                        {/* Move this to tool bar later */}
+                        {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
+                        <Toolbar room={this.props.room} leaveMeeting={this.leaveRoom}></Toolbar>
+                    </div>
+                </div>
+                
             </div>
+
+
         )
     }
 
