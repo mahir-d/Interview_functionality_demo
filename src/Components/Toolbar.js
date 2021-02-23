@@ -1,11 +1,12 @@
 import React, { Component, useState } from 'react';
-import { Button } from 'reactstrap';
-import Room from './Room'
 import './Interview.css'
-import Track from './Track'
-import Participant from './Participant'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrophone, faMicrophoneSlash, faVideo, faVideoSlash } from '@fortawesome/free-solid-svg-icons';
+const{LocalVideoTrack}=require('twilio-video');
+// import Room from './Room'
+
+// import Track from './Track'
+// import Participant from './Participant'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faMicrophone, faMicrophoneSlash, faVideo, faVideoSlash } from '@fortawesome/free-solid-svg-icons';
 
 // function Toolbar(props){
 //     let icon;
@@ -30,11 +31,12 @@ export default class Toolbar extends Component {
         this.state = {
             audio_mute: false,
             video_mute: false,
+            screenTrack: null,
 
         }
         this.muteAudio = this.muteAudio.bind(this)
         this.muteCamera = this.muteCamera.bind(this)
-
+        this.shareScreenHandler=this.shareScreenHandler.bind(this)
     }
     muteAudio() {
         if (this.state.audio_mute == false) {
@@ -75,16 +77,47 @@ export default class Toolbar extends Component {
         }
 
     }
+    async shareScreenHandler(){
+    //    const stream=await navigator.mediaDevices.getDisplayMedia();
+    //    const screenTrack = new LocalVideoTrack(stream.getTracks()[0]);
+    //    this.props.room.localParticipant.publishTrack(screenTrack)
+    //     const screenVid = document.getElementById('mahir');
+    //     console.log(screenTrack)
+        // screenVid.appendChild(screenTrack)
+        if (!this.state.screenTrack) {
+            navigator.mediaDevices.getDisplayMedia().then(stream => {
+                const screenVid = new LocalVideoTrack(stream.getTracks()[0]);
+                this.props.room.localParticipant.publishTrack(screenVid);
+                //shareScreen.innerHTML = 'Stop sharing';
+                this.setState({
+                    screenTrack:screenVid
+                })
+                this.state.screenTrack.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
+            }).catch(() => {
+                alert('Could not share the screen.');
+            });
+        }
+        else {
+            this.props.room.localParticipant.unpublishTrack(this.state.screenTrack);
+            this.state.screenTrack.stop();
+            this.setState({
+                screenTrack:null
+            })
+            //this.state.screenTrack = null;
+            //shareScreen.innerHTML = 'Share screen';
+        }
+    }
+
 
 
 
     render(){
         return(
-        <div class="d-flex align-items-center" id='tbar'>
-                <button type='button' onClick={this.muteAudio} class="p-2">Mute/Unmute</button>
-                <button type='button' onClick={this.muteCamera} class="p-2">Camera On/Off</button>
-            <button type = 'button' class="p-2">Screenshare</button>
-                <button onClick={this.props.leaveMeeting} type='button' class="p-2">Leave Room</button>
+        <div className="d-flex align-items-center" id='tbar'>
+                <button type='button' onClick={this.muteAudio} className="p-2">Mute/Unmute</button>
+                <button type='button' onClick={this.muteCamera} className="p-2">Camera On/Off</button>
+                <button type = 'button' onClick={this.shareScreenHandler} className="p-2">Screenshare</button>
+                <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
         </div>
         )
     }
