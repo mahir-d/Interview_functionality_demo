@@ -27,27 +27,55 @@ export default class Toolbar extends Component {
     constructor(props){
         super(props)
 
-    }
-    muteAudio(){
-    this.props.room.localParticipant.audioTracks.forEach(publication => {
-        publication.track.disable();
-      });
-    }
-    muteCamera(){
-      this.props.room.localParticipant.videoTracks.forEach(publication => {
-        publication.track.disable();
-      });
-    }
-    unmuteAudio(){
-        this.props.room.localParticipant.audioTracks.forEach(publication => {
-            publication.track.enable();
-          });
+        this.state = {
+            audio_mute: false,
+            video_mute: false,
+
         }
-    unmuteCamera(){
-        this.props.room.localParticipant.videoTracks.forEach(publication => {
-        publication.track.enable();
-        });
+        this.muteAudio = this.muteAudio.bind(this)
+        this.muteCamera = this.muteCamera.bind(this)
+
     }
+    muteAudio() {
+        if (this.state.audio_mute == false) {
+            this.props.room.localParticipant.audioTracks.forEach(publication => {
+                publication.track.disable();
+                this.setState({
+                    audio_mute: true
+                })
+            });
+        }
+        else {
+            this.props.room.localParticipant.audioTracks.forEach(publication => {
+                publication.track.enable();
+                this.setState({
+                    audio_mute: false
+                })
+            });
+
+        }
+
+    }
+    muteCamera() {
+        if (this.state.video_mute == false) {
+            this.props.room.localParticipant.videoTracks.forEach(publication => {
+                publication.track.disable();
+                this.setState({
+                    video_mute: true
+                })
+            });
+        }
+        else {
+            this.props.room.localParticipant.videoTracks.forEach(publication => {
+                publication.track.enable();
+                this.setState({
+                    video_mute: false
+                })
+            });
+        }
+
+    }
+<<<<<<< HEAD
     audioState(){
         if (this.props.room.localParticipant.audioTracks[0].value.isTrackEnabled=false){
             this.unmuteAudio()
@@ -70,8 +98,18 @@ export default class Toolbar extends Component {
         <div class="d-flex align-items-center" id='tbar'>
             <button type = 'button' onClick={this.videoState} class="p-2">Camera On/Off</button>
             <button type = 'button' onClick={this.audioState}class="p-2">Mute/Unmute</button>
+=======
+
+
+
+    render(){
+        return(
+        <div class="d-flex align-items-center" id='tbar'>
+                <button type='button' onClick={this.muteAudio} class="p-2">Mute/Unmute</button>
+                <button type='button' onClick={this.muteCamera} class="p-2">Camera On/Off</button>
+>>>>>>> 62e16256794ad11c85a241b32914c5dd697adfa6
             <button type = 'button' class="p-2">Screenshare</button>
-            <button onClick='leaveroom()' type = 'button' class="p-2">Leave Room</button>
+                <button onClick={this.props.leaveMeeting} type='button' class="p-2">Leave Room</button>
         </div>
         )
     }

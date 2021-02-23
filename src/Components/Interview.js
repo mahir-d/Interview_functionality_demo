@@ -15,19 +15,24 @@ export class Interview extends Component {
 
                     </div>
                     <div className="col-sm-12 col-md-4">
-                        <div className="studentProfile">
-                            Student profile
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="studentProfile">
+                                        Student profile
+                                </div>
+                            </div>
+                            <div className="col-12" >
+                                <div className="notes">
+                                    Notes
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="row secondRow">
-                    <div className="col" >
-                        <div className="notes">
-                            Notes
-                       </div>
 
-                    </div>
                 </div>
 
             </div >
