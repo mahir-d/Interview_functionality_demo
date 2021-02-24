@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Interview.css'
 import TwilioVideo from './TwilioVideo';
+import Notes from './Notes'
 
 export class Interview extends Component {
     render() {
@@ -23,7 +24,7 @@ export class Interview extends Component {
                             </div>
                             <div className="col-12" >
                                 <div className="notes">
-                                    Notes
+                                    <Notes></Notes>
                                 </div>
 
                             </div>
