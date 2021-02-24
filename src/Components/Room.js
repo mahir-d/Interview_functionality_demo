@@ -73,7 +73,7 @@ export default class Room extends Component {
                     <div className="col-sm-12 col-md-6 d-flex align-items-start">
                         {
                         this.state.remoteParticipants.map(participant =>
-                        <Participant key={participant.identity} participant={participant} />
+                        <Participant id="remote" key={participant.identity} participant={participant} />
                         )
                         }
                     </div>

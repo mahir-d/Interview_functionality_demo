@@ -23,6 +23,7 @@ export class Participant extends Component {
 
     componentDidMount() {
         if (!this.props.localParticipant) {
+            //This event gets triggered when Participant eventually publishes a new track
             this.props.participant.on('trackSubscribed', track => this.addTrack(track));
         }
     }
