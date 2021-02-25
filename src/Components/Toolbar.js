@@ -33,7 +33,9 @@ export default class Toolbar extends Component {
             video_mute: false,
             screen_share_flag: false,
             screenTrack: null,
-
+            audio_mute_button_value:"Mute",
+            video_mute_button_value:"Turn off Camera",
+            screen_share_button_value:"Share Your Screen"
         }
         this.muteAudio = this.muteAudio.bind(this)
         this.muteCamera = this.muteCamera.bind(this)
@@ -44,7 +46,9 @@ export default class Toolbar extends Component {
             this.props.room.localParticipant.audioTracks.forEach(publication => {
                 publication.track.disable();
                 this.setState({
-                    audio_mute: true
+                    audio_mute: true,
+                    audio_mute_button_value: "Unmute"
+                    
                 })
             });
         }
@@ -52,7 +56,8 @@ export default class Toolbar extends Component {
             this.props.room.localParticipant.audioTracks.forEach(publication => {
                 publication.track.enable();
                 this.setState({
-                    audio_mute: false
+                    audio_mute: false,
+                    audio_mute_button_value: "Mute"
                 })
             });
 
@@ -65,7 +70,8 @@ export default class Toolbar extends Component {
                 if (publication.track.name != "screenShare") {
                     publication.track.disable();
                     this.setState({
-                        video_mute: true
+                        video_mute: true,
+                        video_mute_button_value:"Turn on Camera"
                     })
                 }
 
@@ -75,7 +81,8 @@ export default class Toolbar extends Component {
             this.props.room.localParticipant.videoTracks.forEach(publication => {
                 publication.track.enable();
                 this.setState({
-                    video_mute: false
+                    video_mute: false,
+                    video_mute_button_value:"Turn off Camera"
                 })
             });
         }
@@ -95,7 +102,8 @@ export default class Toolbar extends Component {
                 screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
                 this.setState({
                     screenTrack: screenVid,
-                    screen_share_flag: true
+                    screen_share_flag: true,
+                    screen_share_button_value:"Stop Sharing Your Screen"
                 })
                 this.props.room.localParticipant.publishTrack(this.state.screenTrack);
             }).catch(() => {
@@ -107,7 +115,8 @@ export default class Toolbar extends Component {
             this.state.screenTrack.stop();
             this.setState({
                 screenTrack: null,
-                screen_share_flag: false
+                screen_share_flag: false,
+                screen_share_button_value:"Share Your Screen"
             })
             //this.state.screenTrack = null;
             //shareScreen.innerHTML = 'Share screen';
@@ -120,9 +129,9 @@ export default class Toolbar extends Component {
     render(){
         return(
         <div className="d-flex align-items-center" id='tbar'>
-                <button type='button' onClick={this.muteAudio} className="p-2">Mute/Unmute</button>
-                <button type='button' onClick={this.muteCamera} className="p-2">Camera On/Off</button>
-                <button type = 'button' onClick={this.shareScreenHandler} className="p-2">Screenshare</button>
+                <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
+                <button type='button' onClick={this.muteCamera} className="p-2">{this.state.video_mute_button_value}</button>
+                <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
                 <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
         </div>
         )
