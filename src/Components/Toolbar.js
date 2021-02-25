@@ -62,11 +62,13 @@ export default class Toolbar extends Component {
     muteCamera() {
         if (this.state.video_mute == false) {
             this.props.room.localParticipant.videoTracks.forEach(publication => {
-                console.log(publication)
-                publication.track.disable();
-                this.setState({
-                    video_mute: true
-                })
+                if (publication.track.name != "screenShare") {
+                    publication.track.disable();
+                    this.setState({
+                        video_mute: true
+                    })
+                }
+
             });
         }
         else {
