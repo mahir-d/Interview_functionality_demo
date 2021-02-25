@@ -53,7 +53,11 @@ export class Participant extends Component {
         })
     }
 
+    componentDidUpdate(){
+        let screenShareDomElement = document.getElementsByClassName("remoteParticipantScreenShare")
 
+        console.log(screenShareDomElement)
+    }
 
 
     render() {

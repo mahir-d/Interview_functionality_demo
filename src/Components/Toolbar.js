@@ -100,6 +100,7 @@ export default class Toolbar extends Component {
                 const screenVid = new LocalVideoTrack(stream.getTracks()[0], { name: "screenShare" });
                 //shareScreen.innerHTML = 'Stop sharing';
                 screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
+                // screenVid.onClick(this.zoomIn(screenVid));
                 this.setState({
                     screenTrack: screenVid,
                     screen_share_flag: true,
@@ -122,6 +123,41 @@ export default class Toolbar extends Component {
             //shareScreen.innerHTML = 'Share screen';
         }
     }
+
+    // zoomIn(screenShareVideo){
+    //     if (!screenShareVideo.classList.contains('participantZoomed')) {
+    //         // zoom in
+    //         this.props.room.forEach(participant => {
+    //             if (participant.className == 'remoteScreenShareVideo') {
+    //                 participant.childNodes[0].childNodes.forEach(track => {
+    //                     if (track === screenShareVideo) {
+    //                         track.classList.add('participantZoomed')
+    //                     }
+    //                     else {
+    //                         track.classList.add('participantHidden')
+    //                     }
+    //                 });
+    //                 participant.childNodes[1].classList.add('participantHidden');
+    //             }
+    //         });
+    //     }
+    //     else {
+    //         // zoom out
+    //         this.props.room.forEach(participant => {
+    //             if (participant.className == 'remoteScreenShareVideo') {
+    //                 participant.childNodes[0].childNodes.forEach(track => {
+    //                     if (track === screenShareVideo) {
+    //                         track.classList.remove('participantZoomed');
+    //                     }
+    //                     else {
+    //                         track.classList.remove('participantHidden');
+    //                     }
+    //                 });
+    //                 participant.childNodes[1].classList.remove('participantHidden');
+    //             }
+    //         });
+    //     }    
+    // };
 
 
 
