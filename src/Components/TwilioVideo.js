@@ -65,8 +65,8 @@ class TwilioVideo extends Component {
     render() {
         const disabled = this.state.identity === '' ? true : false;
         return (
-
-            <div>
+            <>
+            
                 {
                     this.state.room === null
                         ? 
@@ -84,8 +84,7 @@ class TwilioVideo extends Component {
 
                     }
 
-                </div>
-
+                </>
         )
     }
 

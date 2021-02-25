@@ -43,11 +43,15 @@
     overflow-y: auto;
 }
 .participants{
+   
     height: 100%;
     width: 100%;
     position:relative;
 }
+.placeHolder{
+    height:300px;
 
+}
 /* CSS to edit video element */
 .track1 video{
     width: 100%;

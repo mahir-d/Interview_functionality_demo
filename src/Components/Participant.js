@@ -65,6 +65,9 @@ export class Participant extends Component {
         }
         return (
             <div>
+                <div style={{display: tracks.length==1}} className="placeHolder">
+
+                </div>
                 <div className={particpantType} id={this.props.participant.identity}>
                     {   
                         this.state.tracks.map(track =>
