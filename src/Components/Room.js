@@ -45,7 +45,6 @@ export default class Room extends Component {
             remoteParticipants: [...this.state.remoteParticipants, participant]
         });
     }
-
     removeParticipant(participant) {
         console.log(`${participant.identity} has left the room`);
         this.setState({
@@ -67,7 +66,6 @@ export default class Room extends Component {
                 <div className="row">
                     <div className="col-sm-12 col-md-6 d-flex  align-items-start">
                         <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
-                        {console.log(this.props.room.localParticipant)}
                     </div>
 
                     <div className="col-sm-12 col-md-6 d-flex align-items-start">
