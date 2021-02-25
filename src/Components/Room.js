@@ -53,6 +53,11 @@ export default class Room extends Component {
     }
 
     leaveRoom() {
+        this.props.room.localParticipant.tracks.forEach(publication => {
+            console.log(publication)
+            const attachedElements = publication.track.detach();
+            attachedElements.forEach(element => element.remove());
+        })
         this.props.room.disconnect();
         this.props.leaveRoom();
     }
