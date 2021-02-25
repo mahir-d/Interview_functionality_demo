@@ -69,21 +69,16 @@ class TwilioVideo extends Component {
             <div>
                 {
                     this.state.room === null
-                        ? <div className="row ">
-                            <div className="col-12 ">
-                                <div className="twilioVideo d-flex justify-content-center align-items-center">
+                        ? 
+                                <div className="twilioVideo">
                                     <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
                                     </div>
-                            </div>
-                        </div>
+
                         : <div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="twilioVideo d-flex justify-content-center align-items-center">
+
+                                    <div className="twilioVideo">
                                         <Room className="room" leaveRoom={this.endMeeting} room={this.state.room}></Room>
                                     </div>
-                                </div>
-                            </div>
                         </div>
                         
 
