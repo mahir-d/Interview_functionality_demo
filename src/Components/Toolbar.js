@@ -88,7 +88,7 @@ export default class Toolbar extends Component {
         // screenVid.appendChild(screenTrack)
         if (this.state.screen_share_flag == false) {
             navigator.mediaDevices.getDisplayMedia().then(stream => {
-                const screenVid = new LocalVideoTrack(stream.getTracks()[0]);
+                const screenVid = new LocalVideoTrack(stream.getTracks()[0], { name: "screenShare" });
                 //shareScreen.innerHTML = 'Stop sharing';
                 screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
                 this.setState({
