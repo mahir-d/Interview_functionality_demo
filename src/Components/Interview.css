@@ -26,6 +26,10 @@
     border-color: black;
 }
 
+
+.identity{
+    background-color: aqua;
+}
 .notes{
     margin-top: 10px;
     border-style: solid;

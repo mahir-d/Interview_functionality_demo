@@ -33,14 +33,20 @@ export class Participant extends Component {
             tracks: [...this.state.tracks, track]
         });
     }
+
+
+
+
     render() {
         return (
             <div>
                 <div className="participant" id={this.props.participant.identity}>
-                    {
+                    {   
                         this.state.tracks.map(track =>
                             <Track key={track} filter={this.state.filter} track={track} />)
                     }
+
+
                     <div className="identity">{this.props.participant.identity}</div>
                 </div>
             </div>
