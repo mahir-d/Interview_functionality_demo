@@ -45,7 +45,6 @@ export default class Room extends Component {
             remoteParticipants: [...this.state.remoteParticipants, participant]
         });
     }
-
     removeParticipant(participant) {
         console.log(`${participant.identity} has left the room`);
         this.setState({
@@ -54,6 +53,11 @@ export default class Room extends Component {
     }
 
     leaveRoom() {
+        this.props.room.localParticipant.tracks.forEach(publication => {
+            console.log(publication)
+            const attachedElements = publication.track.detach();
+            attachedElements.forEach(element => element.remove());
+        })
         this.props.room.disconnect();
         this.props.leaveRoom();
     }
@@ -67,13 +71,12 @@ export default class Room extends Component {
                 <div className="row">
                     <div className="col-sm-12 col-md-6 d-flex  align-items-start">
                         <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
-                        {console.log(this.props.room.localParticipant)}
                     </div>
 
                     <div className="col-sm-12 col-md-6 d-flex align-items-start">
                         {
                         this.state.remoteParticipants.map(participant =>
-                        <Participant key={participant.identity} participant={participant} />
+                        <Participant id="remote" key={participant.identity} participant={participant} />
                         )
                         }
                     </div>

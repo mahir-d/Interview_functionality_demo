@@ -22,7 +22,7 @@ export class Track extends Component {
     render() {
         return (
             <div>
-                <div className="track" ref={this.ref}>
+                <div className="track1" ref={this.ref}>
                 </div>
             </div>
         )

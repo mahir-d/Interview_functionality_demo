@@ -26,6 +26,10 @@
     border-color: black;
 }
 
+
+.identity{
+    background-color: aqua;
+}
 .notes{
     margin-top: 10px;
     border-style: solid;
@@ -40,9 +44,10 @@
     width: 100%;
 }
 
-.participants video{
-    height: 80%;
-    width: 80%;
+/* CSS to edit video element */
+.track1 video{
+    width: 100%;
+    height: 100%;
 }
 
 /* .room{

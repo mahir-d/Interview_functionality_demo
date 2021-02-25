@@ -31,6 +31,7 @@ export default class Toolbar extends Component {
         this.state = {
             audio_mute: false,
             video_mute: false,
+            screen_share_flag: false,
             screenTrack: null,
 
         }
@@ -61,10 +62,13 @@ export default class Toolbar extends Component {
     muteCamera() {
         if (this.state.video_mute == false) {
             this.props.room.localParticipant.videoTracks.forEach(publication => {
-                publication.track.disable();
-                this.setState({
-                    video_mute: true
-                })
+                if (publication.track.name != "screenShare") {
+                    publication.track.disable();
+                    this.setState({
+                        video_mute: true
+                    })
+                }
+
             });
         }
         else {
@@ -84,15 +88,16 @@ export default class Toolbar extends Component {
     //     const screenVid = document.getElementById('mahir');
     //     console.log(screenTrack)
         // screenVid.appendChild(screenTrack)
-        if (!this.state.screenTrack) {
+        if (this.state.screen_share_flag == false) {
             navigator.mediaDevices.getDisplayMedia().then(stream => {
-                const screenVid = new LocalVideoTrack(stream.getTracks()[0]);
-                this.props.room.localParticipant.publishTrack(screenVid);
+                const screenVid = new LocalVideoTrack(stream.getTracks()[0], { name: "screenShare" });
                 //shareScreen.innerHTML = 'Stop sharing';
+                screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
                 this.setState({
-                    screenTrack:screenVid
+                    screenTrack: screenVid,
+                    screen_share_flag: true
                 })
-                this.state.screenTrack.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
+                this.props.room.localParticipant.publishTrack(this.state.screenTrack);
             }).catch(() => {
                 alert('Could not share the screen.');
             });
@@ -101,7 +106,8 @@ export default class Toolbar extends Component {
             this.props.room.localParticipant.unpublishTrack(this.state.screenTrack);
             this.state.screenTrack.stop();
             this.setState({
-                screenTrack:null
+                screenTrack: null,
+                screen_share_flag: false
             })
             //this.state.screenTrack = null;
             //shareScreen.innerHTML = 'Share screen';
