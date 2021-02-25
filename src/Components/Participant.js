@@ -61,9 +61,15 @@ export class Participant extends Component {
 
 
     render() {
+        let particpantType = "participant";
+        if(this.props.localParticipant){
+            particpantType= "local participant";
+        }else{
+            particpantType= "remote participant";
+        }
         return (
             <div>
-                <div className="participant" id={this.props.participant.identity}>
+                <div className={particpantType} id={this.props.participant.identity}>
                     {   
                         this.state.tracks.map(track =>
                             <Track key={track} filter={this.state.filter} track={track} localParticipant={this.props.localParticipant} />)
