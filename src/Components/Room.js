@@ -70,13 +70,13 @@ export default class Room extends Component {
 
                 <div className="row">
                     <div className="col-sm-12 col-md-6 d-flex  align-items-start">
-                        <Participant key={this.props.room.localParticipant.identity} localParticipant="true" participant={this.props.room.localParticipant} />
+                        <Participant key={this.props.room.localParticipant.identity} localParticipant={true} participant={this.props.room.localParticipant} />
                     </div>
 
                     <div className="col-sm-12 col-md-6 d-flex align-items-start">
                         {
                         this.state.remoteParticipants.map(participant =>
-                        <Participant id="remote" key={participant.identity} participant={participant} />
+                            <Participant key={participant.identity} localParticipant={false} participant={participant} />
                         )
                         }
                     </div>

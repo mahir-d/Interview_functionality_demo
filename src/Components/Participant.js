@@ -9,7 +9,6 @@ export class Participant extends Component {
 
     constructor(props) {
         super(props);
-
         const existingPublications = Array.from(this.props.participant.tracks.values());
         const existingTracks = existingPublications.map(publication => publication.track);
         const nonNullTracks = existingTracks.filter(track => track != null)
@@ -24,12 +23,18 @@ export class Participant extends Component {
 
     componentDidMount() {
         if (!this.props.localParticipant) {
-            //This event gets triggered when Participant eventually publishes a new track
+            //This event gets triggered when remote Participant subscribes a new track
             this.props.participant.on('trackSubscribed', track => this.addTrack(track));
+            //This event gets triggered when remote Participant unsubscribes a new track
             this.props.participant.on('trackUnsubscribed', track => this.removeTrack(track));
         }
     }
 
+    /**
+     * This function adds the track which was subscribed by the
+     * remote user recently
+     * @param {the new track which was added for the current participant} track
+     */
     addTrack(track) {
         this.setState({
             tracks: [...this.state.tracks, track]
@@ -57,7 +62,7 @@ export class Participant extends Component {
                 <div className="participant" id={this.props.participant.identity}>
                     {   
                         this.state.tracks.map(track =>
-                            <Track key={track} filter={this.state.filter} track={track} />)
+                            <Track key={track} filter={this.state.filter} track={track} localParticipant={this.props.localParticipant} />)
                     }
 
 
