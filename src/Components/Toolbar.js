@@ -174,11 +174,7 @@ class Toolbar extends Component {
     render(){
         return(
         <div>
-            <div>{
-                
-                <ShareBanner screen_share_flag={this.state.screen_share_flag}/>
-                
-            }</div>
+
                 
             <div className="d-flex align-items-center" id='tbar'>
                     <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
@@ -186,6 +182,11 @@ class Toolbar extends Component {
                     <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
                     <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
             </div>
+            <div>{
+                
+                <ShareBanner screen_share_flag={this.state.screen_share_flag}/>
+                
+            }</div>
         </div>
         )
     }

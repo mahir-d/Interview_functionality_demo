@@ -42,7 +42,7 @@ class TwilioVideo extends Component {
             const data = await response.data;
             console.log(data)
             const room = await connect(data, {
-                name: "testing",
+                name: this.state.room_name,
                 audio: true,
                 video: true
             });
