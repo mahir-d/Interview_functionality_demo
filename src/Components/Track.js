@@ -22,9 +22,9 @@ export class Track extends Component {
             this.ref.current.appendChild(child)
         }
         const pType = this.props.localParticipant == true ? "localParticipant" : "remoteParticipant"
-        if (this.props.track.kind == "video") {
+        if (this.props.track.kind === "video") {
 
-            if (this.props.track.name == "screenShare") {
+            if (this.props.track.name === "screenShare") {
                 this.setState({
                     cssTagName: pType + "ScreenShare track1"
                 })

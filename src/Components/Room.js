@@ -64,11 +64,19 @@ export default class Room extends Component {
 
     render() {
 
+        let waiting =true;
+        
+        if(this.state.remoteParticipants!=0){
+            waiting = false;
+        }
+
         return (
 
-            <div className="participants ">
-
-                
+            <div className="participants">
+                        
+                        <div style={{display: waiting ? "flex" : "none"}}className="placeHolder">
+                            <p>Waiting for participants</p>
+                        </div>
                         
                         <Participant key={this.props.room.localParticipant.identity} localParticipant={true} participant={this.props.room.localParticipant} />
 
