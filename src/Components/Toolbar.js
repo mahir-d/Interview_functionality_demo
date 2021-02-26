@@ -24,7 +24,15 @@ const{LocalVideoTrack}=require('twilio-video');
 // }
 // export default Toolbar
 
-export default class Toolbar extends Component {
+function ShareBanner(props){
+    if (props.screen_share_flag){
+        return (<h4 id='screenBanner'>You are currently sharing your screen!</h4>)
+    }
+    else
+        return (<div></div>)
+}
+
+class Toolbar extends Component {
     constructor(props){
         super(props)
 
@@ -106,6 +114,7 @@ export default class Toolbar extends Component {
                     screen_share_flag: true,
                     screen_share_button_value:"Stop Sharing Your Screen"
                 })
+                
                 this.props.room.localParticipant.publishTrack(this.state.screenTrack);
             }).catch(() => {
                 alert('Could not share the screen.');
@@ -164,13 +173,21 @@ export default class Toolbar extends Component {
 
     render(){
         return(
-        <div className="d-flex align-items-center" id='tbar'>
-                <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
-                <button type='button' onClick={this.muteCamera} className="p-2">{this.state.video_mute_button_value}</button>
-                <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
-                <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
+        <div>
+            <div>{
+                
+                <ShareBanner screen_share_flag={this.state.screen_share_flag}/>
+                
+            }</div>
+                
+            <div className="d-flex align-items-center" id='tbar'>
+                    <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
+                    <button type='button' onClick={this.muteCamera} className="p-2">{this.state.video_mute_button_value}</button>
+                    <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
+                    <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
+            </div>
         </div>
         )
     }
 
-}
+}export default Toolbar
