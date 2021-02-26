@@ -62,19 +62,40 @@ export class Participant extends Component {
 
     render() {
         let particpantType = "participant";
+        let isRemoteShare = false;
         if(this.props.localParticipant){
             particpantType= "local participant";
         }else{
-            particpantType= "remote participant";
+            console.log(this.state.tracks)
+            var i;
+            if(this.state.tracks.length==3){
+                particpantType= "remoteShare participant";
+                var x = document.getElementsByClassName('local');
+                for(i = 0; i < x.length; i++) {
+                  x[i].style.marginBottom = "43px";
+                }
+                
+                isRemoteShare=true;
+            }else{
+                particpantType= "remote participant";
+                var y = document.getElementsByClassName('local');
+                for(i = 0; i < y.length; i++) {
+                  y[i].style.marginBottom = "100px";
+                }
+            }
+            
         }
+        
         return (
             <div>
+
                 <div className={particpantType} id={this.props.participant.identity}>
+                    
                     {   
-                        this.state.tracks.map(track =>
+                        this.state.tracks.slice(0).reverse().map(track =>
                             <Track key={track} filter={this.state.filter} track={track} localParticipant={this.props.localParticipant} />)
                     }
-
+                {/*<div style={{display: isRemoteShare ? "block" : "none"}}className="participantBar"></div>*/}
 
                     <div className="identity">{this.props.participant.identity}</div>
                 </div>
