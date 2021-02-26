@@ -19,6 +19,13 @@
     height: 100%;
     
 }
+#screenBanner{
+    height: 33px;
+    width: 500px;
+    background-color: grey;
+    background-blend-mode: darken;
+
+}
 
 .studentProfile{
     width: 100%;
@@ -73,5 +80,23 @@ border-style: solid;
     width: inherit;
 } */
 #tbar{
+    height: 90%px;
+    width: 100%px;
     background-color: grey;
+}
+
+.participantZoomed {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.participantHidden {
+    display: none;
+}
+
+.remoteParticipantVideo{
+    width: 100%;
+    height: 100%;
 }
