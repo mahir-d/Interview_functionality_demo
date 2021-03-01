@@ -13,6 +13,7 @@ export default class Room extends Component {
         super(props);
 
         this.state = {
+
             remoteParticipants: Array.from(this.props.room.participants.values()),
         }
 
@@ -92,7 +93,7 @@ export default class Room extends Component {
                     <div className="col-12 d-flex align-items-end justify-content-center">
                         {/* Move this to tool bar later */}
                         {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
-                        <Toolbar room={this.props.room} leaveMeeting={this.leaveRoom}></Toolbar>
+                        <Toolbar room={this.props.room} leaveMeeting={this.leaveRoom} videoToggle={this.props.videoToggle} audioToggle={this.props.audioToggle}></Toolbar>
                     </div>
                 </div>
                 

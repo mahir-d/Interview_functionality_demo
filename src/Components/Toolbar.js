@@ -37,8 +37,8 @@ class Toolbar extends Component {
         super(props)
 
         this.state = {
-            audio_mute: false,
-            video_mute: false,
+            audio_mute: this.props.audioToggle,
+            video_mute: this.props.videoToggle,
             screen_share_flag: false,
             screenTrack: null,
             audio_mute_button_value:"Mute",
@@ -48,6 +48,11 @@ class Toolbar extends Component {
         this.muteAudio = this.muteAudio.bind(this)
         this.muteCamera = this.muteCamera.bind(this)
         this.shareScreenHandler=this.shareScreenHandler.bind(this)
+    }
+
+    componentDidMount() {
+        this.muteAudio()
+        this.muteCamera()
     }
     muteAudio() {
         if (this.state.audio_mute == false) {
