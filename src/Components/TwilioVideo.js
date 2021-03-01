@@ -25,6 +25,7 @@ class TwilioVideo extends Component {
             identity: 'mahir',
             //Fetch from backend
             room_name: 'cool-room',
+            participants: 0,
             room: null,
         }
         this.joinRoom = this.joinRoom.bind(this);
@@ -71,8 +72,14 @@ class TwilioVideo extends Component {
                     this.state.room === null
                         ? 
                                 <div className="twilioVideo">
-                                    <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                                    <div id="wrapper">
+                                        <div>
+                                        <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                                        <div className="participantCount"><p>{this.state.participants} Participants Waiting</p></div>
+                                        </div>
                                     </div>
+                                    
+                                </div>
 
                         : <div>
 

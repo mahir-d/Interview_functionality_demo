@@ -28,11 +28,24 @@
     
 }
 #screenBanner{
-    height: 33px;
-    width: 500px;
+    height: 36px;
+    max-width: 500px;
+    color:#4bace9;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #4bace9;
+    line-height: 110%;
+    border-radius: 30px;
     position:absolute;
-    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top:30px;
+    background-color: transparent;
     background-blend-mode: darken;
+    display:none
 
 }
 
@@ -49,12 +62,33 @@
 .identity{
     background-color: #4bace9;
 }
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%; height:100%;
+  }
 .btn-success {
     color: #fff;
     background-color: #4bace9;
+    font-size: 20px;
+    border-color: #4bace9;
+}
+.participantCount{
+    margin-top: 50px;
+    color:#4bace9;
+    padding:8px;
+    border-radius: .25rem;
+    border-width: 2px;
+    border-style: solid;
     border-color: #4bace9;
 }
 
+.participantCount p{
+    margin: 5px;
+    font-size: 20px;
+}
 
 .notes{
     margin-top: 10px;
@@ -77,6 +111,8 @@
     height: 50vw;
     background-color: #cccccc;
     display: flex;
+    border-radius: 30px 30px 0px 0px;
+    
     justify-content: center;
     align-items: center;
 
@@ -104,6 +140,13 @@ border-style: solid;
 
 }
 
+.remote .remoteParticipantVideo video{
+
+    border-radius: 30px 30px 0px 0px;
+    
+}
+
+
 /* screen share styling*/
 
 .remoteShare .remoteParticipantVideo{
@@ -127,6 +170,11 @@ width:30%;
 border-style: solid;
 }
 
+.remoteShare .remoteParticipantScreenShare video{
+
+    border-radius: 30px 30px 0px 0px;
+    
+}
 
 /* .room{
     height: inherit;
