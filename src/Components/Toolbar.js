@@ -110,10 +110,14 @@ class Toolbar extends Component {
         // screenVid.appendChild(screenTrack)
         if (this.state.screen_share_flag == false) {
             navigator.mediaDevices.getDisplayMedia().then(stream => {
+
+                document.getElementById("screenBanner").style.display ="block";
+
                 const screenVid = new LocalVideoTrack(stream.getTracks()[0], { name: "screenShare" });
                 //shareScreen.innerHTML = 'Stop sharing';
                 screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
                 // screenVid.onClick(this.zoomIn(screenVid));
+
                 this.setState({
                     screenTrack: screenVid,
                     screen_share_flag: true,
@@ -133,6 +137,7 @@ class Toolbar extends Component {
                 screen_share_flag: false,
                 screen_share_button_value:"Share Your Screen"
             })
+            document.getElementById("screenBanner").style.display ="none";
             //this.state.screenTrack = null;
             //shareScreen.innerHTML = 'Share screen';
         }
@@ -189,7 +194,7 @@ class Toolbar extends Component {
             </div>
             <div>{
                 
-                <ShareBanner screen_share_flag={this.state.screen_share_flag}/>
+                
                 
             }</div>
         </div>

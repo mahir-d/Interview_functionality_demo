@@ -27,6 +27,7 @@ class TwilioVideo extends Component {
             identity: 'mahir',
             //Fetch from backend
             room_name: 'cool-room',
+            participants: 0,
             room: null,
             cameraAccess: false,
             audioAccess: false,
@@ -120,10 +121,16 @@ class TwilioVideo extends Component {
                 {
                     this.state.room === null
                         ? 
-                        <div className="twilioVideo">
-                            <MediaAccessModal joinRoom={this.joinRoom} videoAccess={this.state.cameraAccess} audioAccess={this.state.audioAccess} videoAudioToggle={this.videoAudioToggle}></MediaAccessModal>
-                            {/* <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button> */}
+                                <div className="twilioVideo">
+                                    <div id="wrapper">
+                                    <div>
+                                        <MediaAccessModal joinRoom={this.joinRoom} videoAccess={this.state.cameraAccess} audioAccess={this.state.audioAccess} videoAudioToggle={this.videoAudioToggle}></MediaAccessModal>
+                                        <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                                        <div className="participantCount"><p>{this.state.participants} Participants Waiting</p></div>
+                                        </div>
                                     </div>
+                                    
+                                </div>
 
                         : <div>
 
