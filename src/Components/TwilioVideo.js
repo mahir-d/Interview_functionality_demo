@@ -125,7 +125,7 @@ class TwilioVideo extends Component {
                                     <div id="wrapper">
                                     <div>
                                         <MediaAccessModal joinRoom={this.joinRoom} videoAccess={this.state.cameraAccess} audioAccess={this.state.audioAccess} videoAudioToggle={this.videoAudioToggle}></MediaAccessModal>
-                                        <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button>
+                                    {/* <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button> */}
                                         <div className="participantCount"><p>{this.state.participants} Participants Waiting</p></div>
                                         </div>
                                     </div>
