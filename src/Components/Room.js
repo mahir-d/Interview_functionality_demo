@@ -73,6 +73,8 @@ export default class Room extends Component {
         return (
 
             <div className="participants">
+
+                        <h4 id='screenBanner'>You are currently sharing your screen!</h4>
                         
                         <div style={{display: waiting ? "flex" : "none"}}className="placeHolder">
                             <p>Waiting for participants</p>
