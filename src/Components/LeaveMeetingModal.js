@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Redirect } from "react-router-dom";
-import { render } from '@testing-library/react';
-
+import { Button, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 class LeaveMeetingModal extends Component {
 
     constructor(props) {

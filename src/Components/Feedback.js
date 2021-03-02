@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Jumbotron, Container, Row, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Jumbotron, Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 class Feedback extends Component {
 
     constructor(props) {

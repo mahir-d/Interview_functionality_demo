@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import Room from './Room'
 import './Interview.css'
 import MediaAccessModal from './MediaAccessModal';
@@ -117,7 +116,6 @@ class TwilioVideo extends Component {
     }
 
     render() {
-        const disabled = this.state.identity === '' ? true : false;
         return (
             <>
             
@@ -127,8 +125,7 @@ class TwilioVideo extends Component {
                                 <div className="twilioVideo">
                                     <div id="wrapper">
                                     <div>
-                                        <MediaAccessModal joinRoom={this.joinRoom} videoAccess={this.state.cameraAccess} audioAccess={this.state.audioAccess} videoAudioToggle={this.videoAudioToggle}></MediaAccessModal>
-                                    {/* <Button disabled={disabled} color="success" onClick={this.joinRoom}>Join Meeting</Button> */}
+                                    <MediaAccessModal joinRoom={this.joinRoom} videoAccess={this.state.cameraAccess} audioAccess={this.state.audioAccess} videoAudioToggle={this.videoAudioToggle}></MediaAccessModal>
                                         <div className="participantCount"><p>{this.state.participants} Participants Waiting</p></div>
                                         </div>
                                     </div>

@@ -4,8 +4,7 @@ import Feedback from './Components/Feedback';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import Interview from './Components/Interview'
 function App() {
