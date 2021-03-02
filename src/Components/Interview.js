@@ -3,15 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Interview.css'
 import TwilioVideo from './TwilioVideo';
 import Notes from './Notes'
-
-export class Interview extends Component {
+class Interview extends Component {
     render() {
         return (
             <div className="container-fluid">
                 <div className="row firstRow">
                     <div className="col-sm-12 col-md-8"  >
                         <div className="twilio ">
-                            <TwilioVideo></TwilioVideo>
+                            <TwilioVideo {...this.props}></TwilioVideo>
                         </div>
 
                     </div>

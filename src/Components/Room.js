@@ -7,7 +7,8 @@
 import React, { Component } from 'react'
 import Participant from './Participant';
 import Toolbar from './Toolbar'
-export default class Room extends Component {
+
+class Room extends Component {
 
     constructor(props) {
         super(props);
@@ -95,7 +96,7 @@ export default class Room extends Component {
                     <div className="col-12 d-flex align-items-end justify-content-center">
                         {/* Move this to tool bar later */}
                         {/* <button id="leaveRoom" onClick={this.leaveRoom}>Leave Room</button> */}
-                        <Toolbar room={this.props.room} leaveMeeting={this.leaveRoom} videoToggle={this.props.videoToggle} audioToggle={this.props.audioToggle}></Toolbar>
+                        <Toolbar {...this.props} room={this.props.room} leaveMeeting={this.leaveRoom} videoToggle={this.props.videoToggle} audioToggle={this.props.audioToggle}></Toolbar>
                     </div>
                 </div>
                 
@@ -107,4 +108,6 @@ export default class Room extends Component {
 
 
 }
+
+export default Room
 
