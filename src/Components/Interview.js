@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Interview.css'
 import TwilioVideo from './TwilioVideo';
 import Notes from './Notes'
+import StudentProfile from './studentProfile';
 class Interview extends Component {
     render() {
         return (
@@ -18,7 +19,7 @@ class Interview extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <div className="studentProfile">
-                                        Student profile
+                                    <StudentProfile></StudentProfile>
                                 </div>
                             </div>
                             <div className="col-12" >
