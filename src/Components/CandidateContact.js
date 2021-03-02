@@ -8,20 +8,15 @@ export class CandidateContact extends React.Component {
     render() {
             return (
             <div>
-                <Container>
-                    <Row>
-                        <Col className='contactCol'>
-                            {/* <Row> */}
-                                <Card>
+
+
+                <Card>
                                     <CardBody>
                                         <CardText>Name: {this.props.studentName}</CardText>
                                         <CardText>Email: {this.props.studentEmail}</CardText>
                                     </CardBody>
-                            </Card>
-                        </Col>
-                    </Row>
+                    </Card>
 
-                </Container>
                 </div>
             )
         }

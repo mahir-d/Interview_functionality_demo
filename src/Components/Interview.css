@@ -65,6 +65,9 @@
   border-radius: 30px;
 }
 
+.studentProfileInnerComponent{
+    padding: 20px;
+}
 
 .identity{
     background-color: #4bace9;

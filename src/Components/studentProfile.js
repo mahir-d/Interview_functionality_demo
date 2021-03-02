@@ -41,23 +41,25 @@ export class StudentProfile extends Component {
                 <div>
                     <Container >
                         <Row >
-                            <Col className="overflow-auto studentProfile">
-                                <h3>Candidate Profile</h3>
+                            <Col sm="12" className="overflow-auto studentProfile studentProfileInnerComponent">
+                                <h4>Candidate Profile</h4>
 
                                 <CandidateContact studentName={this.state.studentData.name} studentEmail={this.state.studentData.email}></CandidateContact>
                                 {/* These are hardcoded for now the Grades. Need fix */}
-
+                                
+                                <h4>Candidate Grades</h4>
                                 <CandidateGrades></CandidateGrades>
 
-                                <h3>Candidate Expereinces</h3>
+                                <h4>Candidate Expereinces</h4>
                                 {
                                     this.state.studentData.experiences.map(studentExp => (
 
                                         < CandidateExpereinces key={studentExp.expId} studentExp={studentExp} ></CandidateExpereinces>
                                     ))
                                 }
-                                <CandidateSkills></CandidateSkills>
-                                <h2>Candidate Education</h2>
+                                <h4>Candidate Skills</h4>
+                                <CandidateSkills studSkills={this.state.studentData.skills}></CandidateSkills>
+                                <h4>Candidate Education</h4>
                                 {
                                     this.state.studentData.educations.map(studentEdu => (
                                         <CandidateEducation key={studentEdu.edId} studentEdu={studentEdu}></CandidateEducation>
@@ -67,6 +69,7 @@ export class StudentProfile extends Component {
 
                             </Col>
                         </Row>
+
                     </Container>
 
                     
