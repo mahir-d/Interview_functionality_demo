@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import './Interview.css'
+import LeaveMeetingModal from './LeaveMeetingModal';
 const{LocalVideoTrack}=require('twilio-video');
 // import Room from './Room'
 
@@ -143,44 +144,6 @@ class Toolbar extends Component {
         }
     }
 
-    // zoomIn(screenShareVideo){
-    //     if (!screenShareVideo.classList.contains('participantZoomed')) {
-    //         // zoom in
-    //         this.props.room.forEach(participant => {
-    //             if (participant.className == 'remoteScreenShareVideo') {
-    //                 participant.childNodes[0].childNodes.forEach(track => {
-    //                     if (track === screenShareVideo) {
-    //                         track.classList.add('participantZoomed')
-    //                     }
-    //                     else {
-    //                         track.classList.add('participantHidden')
-    //                     }
-    //                 });
-    //                 participant.childNodes[1].classList.add('participantHidden');
-    //             }
-    //         });
-    //     }
-    //     else {
-    //         // zoom out
-    //         this.props.room.forEach(participant => {
-    //             if (participant.className == 'remoteScreenShareVideo') {
-    //                 participant.childNodes[0].childNodes.forEach(track => {
-    //                     if (track === screenShareVideo) {
-    //                         track.classList.remove('participantZoomed');
-    //                     }
-    //                     else {
-    //                         track.classList.remove('participantHidden');
-    //                     }
-    //                 });
-    //                 participant.childNodes[1].classList.remove('participantHidden');
-    //             }
-    //         });
-    //     }    
-    // };
-
-
-
-
     render(){
         return(
         <div>
@@ -189,8 +152,9 @@ class Toolbar extends Component {
             <div className="d-flex align-items-center" id='tbar'>
                     <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
                     <button type='button' onClick={this.muteCamera} className="p-2">{this.state.video_mute_button_value}</button>
-                    <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
-                    <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
+                    <button type='button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
+                    <LeaveMeetingModal {...this.props} leaveMeeting={this.props.leaveMeeting} userRole={1}></LeaveMeetingModal>
+                    {/* <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button> */}
             </div>
             <div>{
                 
@@ -201,4 +165,4 @@ class Toolbar extends Component {
         )
     }
 
-}export default Toolbar
+} export default Toolbar

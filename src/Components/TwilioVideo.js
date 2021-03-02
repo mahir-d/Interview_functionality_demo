@@ -21,7 +21,7 @@ class TwilioVideo extends Component {
 
     constructor(props) {
         super(props)
-
+        
         this.state = {
             //This is the user's name to join the video room, fetch from backend
             identity: 'mahir',
@@ -40,7 +40,9 @@ class TwilioVideo extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
+        /** This checks for physical camera, microphone being present
+         * before joining a meeting and sets camera/audio access to true
+         * */
         navigator.mediaDevices.enumerateDevices().then(devices => {
             console.log(devices)
             const videoInput = devices.find(device => device.kind === 'videoinput');
@@ -70,7 +72,7 @@ class TwilioVideo extends Component {
             const data = await response.data;
             console.log(data)
             const room = await connect(data, {
-                name: "mahir-room",
+                name: this.state.room_name,
                 audio: this.state.audioAccess,
                 video: this.state.cameraAccess
             });
@@ -79,7 +81,8 @@ class TwilioVideo extends Component {
             });
         } catch (e) {
             // Add a reactstrap alert instead
-            console.log(e.code + e.message)
+
+            //If the video/audio does not have permission
             if (e.code === 0) {
                 alert("Please check your system permission for audio video access ")
             }
@@ -135,7 +138,7 @@ class TwilioVideo extends Component {
                         : <div>
 
                                     <div className="twilioVideo">
-                                <Room className="room" leaveRoom={this.endMeeting} room={this.state.room} videoToggle={this.state.videoToggle} audioToggle={this.state.audioToggle}></Room>
+                                <Room className="room" {...this.props} leaveRoom={this.endMeeting} room={this.state.room} videoToggle={this.state.videoToggle} audioToggle={this.state.audioToggle}></Room>
                                     </div>
                         </div>
                         
