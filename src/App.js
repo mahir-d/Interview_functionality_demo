@@ -17,7 +17,7 @@ function App() {
 
 
                 <Switch>
-                    <Route path="/interview" component={Interview}>
+                    <Route path="/" component={Interview}>
 
                     </Route>
                     <Route exact path="/feedback" component={Feedback}>
