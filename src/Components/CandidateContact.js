@@ -12,8 +12,11 @@ export class CandidateContact extends React.Component {
                     <Row>
                         <Col className='contactCol'>
                             {/* <Row> */}
-                            <Card>
-                                <CardHeader><h2>Pranav Bhojraj</h2>pbhojraj@gmail.com</CardHeader>
+                                <Card>
+                                    <CardBody>
+                                        <CardText>Name: {this.props.studentName}</CardText>
+                                        <CardText>Email: {this.props.studentEmail}</CardText>
+                                    </CardBody>
                             </Card>
                         </Col>
                     </Row>
