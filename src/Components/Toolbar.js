@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import './Interview.css'
+import LeaveMeetingModal from './LeaveMeetingModal';
 const{LocalVideoTrack}=require('twilio-video');
 // import Room from './Room'
 
@@ -37,8 +38,8 @@ class Toolbar extends Component {
         super(props)
 
         this.state = {
-            audio_mute: false,
-            video_mute: false,
+            audio_mute: this.props.audioToggle,
+            video_mute: this.props.videoToggle,
             screen_share_flag: false,
             screenTrack: null,
             audio_mute_button_value:"Mute",
@@ -48,6 +49,11 @@ class Toolbar extends Component {
         this.muteAudio = this.muteAudio.bind(this)
         this.muteCamera = this.muteCamera.bind(this)
         this.shareScreenHandler=this.shareScreenHandler.bind(this)
+    }
+
+    componentDidMount() {
+        this.muteAudio()
+        this.muteCamera()
     }
     muteAudio() {
         if (this.state.audio_mute == false) {
@@ -105,10 +111,14 @@ class Toolbar extends Component {
         // screenVid.appendChild(screenTrack)
         if (this.state.screen_share_flag == false) {
             navigator.mediaDevices.getDisplayMedia().then(stream => {
+
+                document.getElementById("screenBanner").style.display ="block";
+
                 const screenVid = new LocalVideoTrack(stream.getTracks()[0], { name: "screenShare" });
                 //shareScreen.innerHTML = 'Stop sharing';
                 screenVid.mediaStreamTrack.onended = () => { this.shareScreenHandler() };
                 // screenVid.onClick(this.zoomIn(screenVid));
+
                 this.setState({
                     screenTrack: screenVid,
                     screen_share_flag: true,
@@ -128,66 +138,31 @@ class Toolbar extends Component {
                 screen_share_flag: false,
                 screen_share_button_value:"Share Your Screen"
             })
+            document.getElementById("screenBanner").style.display ="none";
             //this.state.screenTrack = null;
             //shareScreen.innerHTML = 'Share screen';
         }
     }
 
-    // zoomIn(screenShareVideo){
-    //     if (!screenShareVideo.classList.contains('participantZoomed')) {
-    //         // zoom in
-    //         this.props.room.forEach(participant => {
-    //             if (participant.className == 'remoteScreenShareVideo') {
-    //                 participant.childNodes[0].childNodes.forEach(track => {
-    //                     if (track === screenShareVideo) {
-    //                         track.classList.add('participantZoomed')
-    //                     }
-    //                     else {
-    //                         track.classList.add('participantHidden')
-    //                     }
-    //                 });
-    //                 participant.childNodes[1].classList.add('participantHidden');
-    //             }
-    //         });
-    //     }
-    //     else {
-    //         // zoom out
-    //         this.props.room.forEach(participant => {
-    //             if (participant.className == 'remoteScreenShareVideo') {
-    //                 participant.childNodes[0].childNodes.forEach(track => {
-    //                     if (track === screenShareVideo) {
-    //                         track.classList.remove('participantZoomed');
-    //                     }
-    //                     else {
-    //                         track.classList.remove('participantHidden');
-    //                     }
-    //                 });
-    //                 participant.childNodes[1].classList.remove('participantHidden');
-    //             }
-    //         });
-    //     }    
-    // };
-
-
-
-
     render(){
         return(
         <div>
-            <div>{
-                
-                <ShareBanner screen_share_flag={this.state.screen_share_flag}/>
-                
-            }</div>
+
                 
             <div className="d-flex align-items-center" id='tbar'>
                     <button type='button' onClick={this.muteAudio} className="p-2">{this.state.audio_mute_button_value}</button>
                     <button type='button' onClick={this.muteCamera} className="p-2">{this.state.video_mute_button_value}</button>
-                    <button type = 'button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
-                    <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button>
+                    <button type='button' onClick={this.shareScreenHandler} className="p-2">{this.state.screen_share_button_value}</button>
+                    <LeaveMeetingModal {...this.props} leaveMeeting={this.props.leaveMeeting} userRole={1}></LeaveMeetingModal>
+                    {/* <button onClick={this.props.leaveMeeting} type='button' className="p-2">Leave Room</button> */}
             </div>
+            <div>{
+                
+                
+                
+            }</div>
         </div>
         )
     }
 
-}export default Toolbar
+} export default Toolbar

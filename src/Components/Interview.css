@@ -4,13 +4,20 @@
 .firstRow{
     margin: 10px;
 }
+
+.container-fluid{
+    background-color: #edf1f5;
+    padding:1px;
+}
 .twilio{
-    border-style: solid;
-    border-color: black;
+
     width: 100%;
     height: 100%;
-    background-color: brown;
-   
+    background-color: #021939;
+    position: relative;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+
+    border-radius: 30px;
     
 }
 
@@ -18,36 +25,87 @@
     width: 100%;
     height: 100%;
     
+    
 }
 #screenBanner{
-    height: 33px;
-    width: 500px;
-    background-color: grey;
+    height: 36px;
+    max-width: 500px;
+    color:#4bace9;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #4bace9;
+    line-height: 110%;
+    border-radius: 30px;
+    position:absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top:30px;
+    background-color: transparent;
     background-blend-mode: darken;
+    display:none
 
+}
+
+.feedbackJumbotron{
+    background-color:#4bace9;
+}
+.feedbackForm{
+    background-color: #cccccc;
 }
 
 .studentProfile{
     width: 100%;
     height: 500px;
-    background-color: yellow;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
     
-    border-style: solid;
-    border-color: black;
+  border-radius: 30px;
 }
 
 
 .identity{
-    background-color: aqua;
+    background-color: #4bace9;
 }
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%; height:100%;
+  }
+.btn-success {
+    color: #fff;
+    background-color: #4bace9;
+    font-size: 20px;
+    border-color: #4bace9;
+}
+.participantCount{
+    margin-top: 50px;
+    color:#4bace9;
+    padding:8px;
+    border-radius: .25rem;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #4bace9;
+}
+
+.participantCount p{
+    margin: 5px;
+    font-size: 20px;
+}
+
 .notes{
     margin-top: 10px;
-    border-style: solid;
-    border-color: black;
+
     width: 100%;
     height: 200px;
-    background-color:rgb(255, 255, 255);
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
     overflow-y: auto;
+    border-radius: 30px;
 }
 .participants{
    
@@ -60,6 +118,8 @@
     height: 50vw;
     background-color: #cccccc;
     display: flex;
+    border-radius: 30px 30px 0px 0px;
+    
     justify-content: center;
     align-items: center;
 
@@ -87,6 +147,13 @@ border-style: solid;
 
 }
 
+.remote .remoteParticipantVideo video{
+
+    border-radius: 30px 30px 0px 0px;
+    
+}
+
+
 /* screen share styling*/
 
 .remoteShare .remoteParticipantVideo{
@@ -110,6 +177,11 @@ width:30%;
 border-style: solid;
 }
 
+.remoteShare .remoteParticipantScreenShare video{
+
+    border-radius: 30px 30px 0px 0px;
+    
+}
 
 /* .room{
     height: inherit;

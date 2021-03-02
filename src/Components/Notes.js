@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom';
-import {Editor, EditorState, RichUtils} from 'draft-js';
 import '../../node_modules/draft-js/dist/Draft.css'
 import RichTextEditor from 'react-rte';
 
