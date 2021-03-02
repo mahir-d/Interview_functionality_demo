@@ -49,6 +49,13 @@
 
 }
 
+.feedbackJumbotron{
+    background-color:#4bace9;
+}
+.feedbackForm{
+    background-color: #cccccc;
+}
+
 .studentProfile{
     width: 100%;
     height: 500px;
